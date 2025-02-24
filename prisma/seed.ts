@@ -1,9 +1,9 @@
-const { PrismaClient } = require("@prisma/client");
+import { PrismaClient } from "@prisma/client";
 
 const prismaClient = new PrismaClient();
 
 const main = async () => {
-  await prismaClient.$transaction(async (tx: any) => {
+  await prismaClient.$transaction(async (tx) => {
     await tx.restaurant.deleteMany();
     const restaurant = await tx.restaurant.create({
       data: {
