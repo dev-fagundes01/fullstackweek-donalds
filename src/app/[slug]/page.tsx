@@ -17,15 +17,16 @@ export default async function RestaurantPage({ params }: RestaurantPageProps) {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center px-6 pt-24">
-      <div className="items flex flex-col gap-2">
+      <div className="flex items-center flex-col gap-2">
         <Image
           src={restaurant?.avatarImageUrl}
           alt={restaurant?.name}
           width={82}
           height={82}
         />
+        <h2>{restaurant.name}</h2>
       </div>
-      <div className="space-y-2 pt-24 text-center">
+      <div className="space-y-2 pt-20 text-center">
         <h3 className="text-2xl font-semibold">Seja bem-vindo!</h3>
         <p className="opacity-55">
           Escolha como prefere aproveitar sua refeição. Estamos aqui para
