@@ -78,7 +78,7 @@ export default function RestaurantCategories({
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
 
-      <h3 className='px-5 pt-2 font-semibold'>{selectedCategory.name}</h3>
+      <h3 className="px-5 pt-2 font-semibold">{selectedCategory.name}</h3>
       <Products products={selectedCategory.products} />
     </div>
   );

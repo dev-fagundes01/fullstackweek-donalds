@@ -26,7 +26,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   if (!product) return notFound();
 
   return (
-    <div className='flex flex-col h-full'>
+    <div className="flex h-full flex-col">
       <ProductHeader product={product} />
       <ProductDetails product={product} />
     </div>

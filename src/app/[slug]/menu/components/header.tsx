@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Restaurant } from "@prisma/client";
 import { ChevronLeftIcon, ScrollTextIcon } from "lucide-react";
@@ -12,7 +12,7 @@ interface RestaurantHeaderProps {
 }
 
 export default function RestaurantHeader({
-  restaurant
+  restaurant,
 }: RestaurantHeaderProps) {
   const router = useRouter();
 
