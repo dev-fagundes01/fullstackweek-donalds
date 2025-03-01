@@ -17,7 +17,7 @@ export default function HomePage() {
       </div>
 
       <h3 className="text-2xl font-bold">Seja bem-vindo</h3>
-      <p>
+      <p className='text-center'>
         Clique no botão abaixo para escolher a forma de consumo e fazer o seu
         pedido
       </p>

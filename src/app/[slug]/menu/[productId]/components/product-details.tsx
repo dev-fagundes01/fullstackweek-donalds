@@ -27,7 +27,7 @@ interface ProductDetailsProps {
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
   const { toggleCart, addProduct } = useContext(CartContext);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState<number>(1);
 
   const handleDecreaseQuantity = () => {
     setQuantity((prev) => {
