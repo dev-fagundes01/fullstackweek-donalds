@@ -6,7 +6,7 @@ import { db } from '@/lib/prisma';
 
 export async function POST(req: Request) {
   if(!process.env.STRIPE_WEBHOOK_SECRET_KEY) {
-    return new Error('Missing Stripe secret key')
+    throw new Error('Missing Stripe secret key')
   }
 
   const stripe = new Stripe(process.env.STRIPE_WEBHOOK_SECRET_KEY, {
@@ -22,15 +22,19 @@ export async function POST(req: Request) {
   }
 
   const text = await req.text()
-  const event = stripe.webhooks.constructEvent(text, signature, webhookSecret)
+  let event
+  try {
+    event = stripe.webhooks.constructEvent(text, signature, webhookSecret)    
+  } catch (err) {
+    console.error(err)
+    return NextResponse.json({error: 'Webhook signature verification failed.'}, {status: 400})
+  }
 
   switch (event.type) {
     case "checkout.session.completed": {
       const orderId = event.data.object.metadata?.orderId
 
-      if(!orderId) {
-        return NextResponse.json({received: true})
-      }
+      if(!orderId) return NextResponse.json({received: true})      
   
      const order = await db.order.update({
         where: {id: Number(orderId)},
@@ -48,10 +52,8 @@ export async function POST(req: Request) {
     case "charge.failed": {
       const orderId = event.data.object.metadata?.orderId
 
-      if(!orderId) {
-        return NextResponse.json({received: true})
-      }
-  
+      if(!orderId) return NextResponse.json({received: true})
+        
      const order = await db.order.update({
         where: {id: Number(orderId)},
         data: {status: 'PAYMENT_FAILED'},
