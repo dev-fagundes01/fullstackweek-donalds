@@ -93,6 +93,9 @@ export default function FinishOrderDialog({
       const { sessionId } = await createStripeCheckout({
         products,
         orderId: order.id,
+        slug,
+        consumptionMethod,
+        cpf: data.cpf
       });
       if (!process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY) return;
       const stripe = await loadStripe(
