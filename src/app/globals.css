@@ -48,3 +48,9 @@ body {
     @apply h-full;
   }
 }
+
+@layer utilities {
+  .size-small {
+    font-size: small;
+  }
+}

@@ -19,7 +19,7 @@ export default function CartProductItem({ product }: CartItemProps) {
   return (
     <div className="flex items-center justify-center">
       <div className="flex items-center gap-3">
-        <div className="relative h-20 w-20 rounded-xl bg-gray-100">
+        <div className="relative h-14 w-14 rounded-xl bg-gray-100">
           <Image src={product.imageUrl} alt={product.name} fill />
         </div>
 
@@ -27,7 +27,7 @@ export default function CartProductItem({ product }: CartItemProps) {
           <p className="max-w-[90%] truncate text-ellipsis text-xs">
             {product.name}
           </p>
-          <p className="text-sm font-semibold">
+          <p className="text-xs font-semibold">
             {formatCurrency(product.price)}
           </p>
 
@@ -48,11 +48,12 @@ export default function CartProductItem({ product }: CartItemProps) {
               <ChevronRightIcon />
             </Button>
           </div>
+          
         </div>
       </div>
 
       <Button
-        className="h-7 w-7 rounded-lg"
+        className="absolute right-5 h-7 w-7 rounded-lg"
         variant="outline"
         onClick={() => removeProduct(product.id)}
       >

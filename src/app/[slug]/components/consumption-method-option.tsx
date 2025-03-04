@@ -22,16 +22,20 @@ export default function ConsumptionMethodOption({
 }: ConsumptionMethodOptionProps) {
   return (
     <Card>
-      <CardContent className="flex flex-col items-center gap-8 py-8">
+      <CardContent className="flex flex-col items-center gap-2 py-2">
         <div className="relative h-[80px] w-[80px]">
           <Image
             src={imageUrl}
-            fill
             alt={imageAlt}
             className="object-contain"
+            fill
           />
         </div>
-        <Button variant="secondary" className="rounded-full" asChild>
+        <Button
+          variant="secondary"
+          className="rounded-full p-2 text-xs"
+          asChild
+        >
           <Link href={`/${slug}/menu?consumptionMethod=${option}`}>
             {buttonText}
           </Link>
