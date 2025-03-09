@@ -60,9 +60,9 @@ export default async function createStripeCheckout({
           name: product.name,
           images: [product.imageUrl]
         },
-        unit_amount: product.price * 100,
+        unit_amount: productsWithPrices.find((p) => p.id === product.id)!.price * 100
       },
-      quantity: productsWithPrices.find((p) => p.id === product.id)!.price * 100
+      quantity: product.quantity
     }))
   })
 
