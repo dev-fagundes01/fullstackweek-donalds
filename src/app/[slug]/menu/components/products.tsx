@@ -5,14 +5,16 @@ import { useParams, useSearchParams } from "next/navigation";
 
 import formatCurrency from "@/helpers/format-currency";
 
+import CartSummary from "./CartSummary";
+
 interface ProductsProps {
   products: Product[];
 }
 
 export default function Products({ products }: ProductsProps) {
   const { slug } = useParams<{ slug: string }>();
-  const searchParams = useSearchParams()
-  const consumptionMethod = searchParams.get('consumptionMethod')
+  const searchParams = useSearchParams();
+  const consumptionMethod = searchParams.get("consumptionMethod");
 
   return (
     <div className="space-y-3 px-5">
@@ -24,7 +26,9 @@ export default function Products({ products }: ProductsProps) {
         >
           <div>
             <h3 className="text-sm font-medium">{product.name}</h3>
-            <p className="line-clamp-2">{product.description}</p>
+            <p className="line-clamp-2 text-sm text-muted-foreground">
+              {product.description}
+            </p>
             <p className="pt-3 text-sm font-semibold">
               {formatCurrency(product.price)}
             </p>
@@ -40,6 +44,7 @@ export default function Products({ products }: ProductsProps) {
           </div>
         </Link>
       ))}
+      <CartSummary/>
     </div>
   );
 }
