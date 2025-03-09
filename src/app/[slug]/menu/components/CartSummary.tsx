@@ -12,13 +12,13 @@ export default function CartSummary() {
   return (
     <div className="fixed bottom-1 z-10 flex w-[89%] justify-between bg-white">
       <div>
-        <p>Total dos pedidos</p>
-        <p>
+        <p className='text-sm'>Total dos pedidos</p>
+        <p className='text-sm'>
           <span className="font-bold">R$ {formatCurrency(total)}</span> /{" "}
           {totalQuantity} item
         </p>
       </div>
-      <Button variant="destructive" onClick={() => toggleCart()}>Ver sacola</Button>
+      <Button className='text-xs' variant="destructive" onClick={() => toggleCart()}>Ver sacola</Button>
       <CartSheet/>
     </div>
   );

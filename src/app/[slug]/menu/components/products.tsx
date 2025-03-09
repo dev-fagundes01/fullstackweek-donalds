@@ -2,9 +2,11 @@ import { Product } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
+import { useContext } from "react";
 
 import formatCurrency from "@/helpers/format-currency";
 
+import { CartContext } from "../contexts/cart";
 import CartSummary from "./CartSummary";
 
 interface ProductsProps {
@@ -15,6 +17,7 @@ export default function Products({ products }: ProductsProps) {
   const { slug } = useParams<{ slug: string }>();
   const searchParams = useSearchParams();
   const consumptionMethod = searchParams.get("consumptionMethod");
+  const {totalQuantity} = useContext(CartContext);
 
   return (
     <div className="space-y-3 px-5">
@@ -44,7 +47,8 @@ export default function Products({ products }: ProductsProps) {
           </div>
         </Link>
       ))}
-      <CartSummary/>
+
+      {totalQuantity > 0 && <CartSummary />}
     </div>
   );
 }
