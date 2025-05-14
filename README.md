@@ -2,7 +2,7 @@
 
 ## Sobre o Projeto:
 
-O projeto é um app para restaurantes, onde os usuários podem fazer pedidos de forma prática e intuitiva.
+Este projeto, com layout focado em dispositivos móveis, é um aplicativo para restaurantes que permite aos usuários realizarem pedidos de forma prática, rápida e intuitiva.
 
 📌 Funcionalidades: <br>
 ✅ Escolher entre comer no local ou levar para casa.<br>
